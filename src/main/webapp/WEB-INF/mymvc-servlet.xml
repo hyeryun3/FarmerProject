@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.*" />
+
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" 
+		p:driverClass="com.mysql.cj.jdbc.Driver" p:url="jdbc:mysql://localhost:3306/mysql?characterEncoding=UTF-8&amp;serverTimezone=UTC" 
+		p:username="heidi1203" p:password="hyeryun1203" /> <bean id="jdbcTemplate" 
+		class="org.springframework.jdbc.core.JdbcTemplate"> <property name="dataSource" 
+		ref="dataSource" /> </bean> -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+		<property name="contentType" value="text/html; charset=UTF-8"/>
+	</bean>
+
+	<bean id="beanNameResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver"
+		p:order="0" />
+
+	<bean id="result"
+		class="net.sf.json.spring.web.servlet.view.JsonView" />
+
+
+
+</beans>
