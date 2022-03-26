@@ -118,7 +118,7 @@ jQuery(document).ready(function() {
 			success: function(data){
 				if(data.r == 1){
 					alert("회원가입이 완료되었습니다.");
-					location.replace('./login.do');
+					location.replace('./index.do');
 				}
 				if(data.r == 0){
 					$('#id').focus();

@@ -34,7 +34,14 @@ public class MyController {
 		int r =0;
 		if(e==0) {
 			r=biz.insertMember(vo);
+			session.setAttribute("loginname", vo.getName());
 			session.setAttribute("loginid", vo.getId());
+			session.setAttribute("email", vo.getEmail());
+			session.setAttribute("password", vo.getPassword());
+			String tel2 = vo.getTel().substring(3, 7);
+			String tel3 = vo.getTel().substring(7,11);
+			session.setAttribute("tel2", tel2);
+			session.setAttribute("tel3", tel3);
 			System.out.println(r + " 가입시켜줄게");
 		}else {
 			System.out.println(r + " 이미존재하는 아이디");
@@ -107,7 +114,7 @@ public class MyController {
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/");
+		mav.setViewName("redirect:index.do");
 		return mav;
 	}
 	
@@ -145,7 +152,7 @@ public class MyController {
 	}
 	
 	@PostMapping(value="aftermodify.do")
-	public ModelAndView afterModify(MemberVO vo) {
+	public ModelAndView afterModify(MemberVO vo, HttpSession session) {
 		
 		System.out.println("회원정보수정 컨트롤러");
 		System.out.println(vo.getId());
@@ -155,6 +162,12 @@ public class MyController {
 //		@RequestParam("email") String email 
 //		System.out.println(email);
 		int r = biz.modifyinfo(vo.getEmail(), vo.getPassword(), vo.getTel(), vo.getId());
+		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("password", vo.getPassword());
+		String tel2 = vo.getTel().substring(3, 7);
+		String tel3 = vo.getTel().substring(7,11);
+		session.setAttribute("tel2", tel2);
+		session.setAttribute("tel3", tel3);
 		return new ModelAndView("result", "r", r);
 	}
 }
