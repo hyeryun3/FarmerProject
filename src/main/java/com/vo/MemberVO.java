@@ -7,6 +7,7 @@ public class MemberVO {
 	private String password;
 	private String tel;
 
+
 	public MemberVO() {
 	}
 

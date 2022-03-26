@@ -5,7 +5,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,8 +60,6 @@ public class MyController {
 	@PostMapping("afterlogin.do")
 	public String listMember(@RequestParam("id") String id, @RequestParam("pw") String pw, HttpSession session) {
 		
-		
-		
 		System.out.println("로그인 체크 컨트롤러");
 		String str = null;
 		MemberVO vo = new MemberVO();
@@ -68,9 +68,15 @@ public class MyController {
 		
 		if (vo!=null) {
 			System.out.println("로그인 성공!");
-			System.out.println(vo.getName());
 			session.setAttribute("loginname", vo.getName());
-			session.setAttribute("loginid", id);
+			session.setAttribute("loginid", vo.getId());
+			session.setAttribute("email", vo.getEmail());
+			session.setAttribute("password", vo.getPassword());
+			String tel2 = vo.getTel().substring(3, 7);
+			String tel3 = vo.getTel().substring(7,11);
+			session.setAttribute("tel2", tel2);
+			session.setAttribute("tel3", tel3);
+			
 			str = "index";
 		} else {
 			System.out.println("로그인 실패!");
@@ -120,5 +126,19 @@ public class MyController {
 	@RequestMapping("mypage.do")
 	public String mypage() {
 		return "mypage";
+	}
+	
+	@PostMapping(value="aftermodify.do")
+	public ModelAndView afterModify(MemberVO vo) {
+		
+		System.out.println("회원정보수정 컨트롤러");
+		System.out.println(vo.getId());
+		System.out.println(vo.getEmail());
+		System.out.println(vo.getPassword());
+		System.out.println(vo.getTel());
+//		@RequestParam("email") String email 
+//		System.out.println(email);
+		int r = biz.modifyinfo(vo.getEmail(), vo.getPassword(), vo.getTel(), vo.getId());
+		return new ModelAndView("result", "r", r);
 	}
 }

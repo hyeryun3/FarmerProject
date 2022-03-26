@@ -48,4 +48,9 @@ public class MemberBiz {
 		System.out.println("존재하는지 체크 biz");
 		return dao.existMember(id);
 	}
+
+	public int modifyinfo(String email, String password, String tel, String id) {
+		System.out.println("회원정보수정 biz");
+		return dao.modifyinfo(email, password, tel, id);
+	}
 }

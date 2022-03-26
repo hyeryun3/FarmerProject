@@ -129,4 +129,20 @@ public class MemberDAO {
 		return r;
 	}
 
+	public int modifyinfo(String email, String password, String tel, String id) {
+		int r = 0;
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			r=mapper.modify(email, password, tel, id);
+			System.out.println("modify 연결완료");
+			if (r > 0) {
+				session.commit();
+				System.out.println("수정 완료");
+			} else {
+				session.rollback();
+			}
+		}
+		return r;
+	}
+
 }

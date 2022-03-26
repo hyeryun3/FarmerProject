@@ -52,4 +52,9 @@ public interface WebMapper {
 
 	@Select("select * from customer where id=#{id} and password=#{pw}")
 	public MemberVO checkLogin(@Param("id") String id, @Param("pw") String pw);
+	
+	@Update("update customer set email=#{email}, password=#{password}, tel=#{tel} where id=#{id}")
+	public int modify(@Param("email") String email, @Param("password") String password, @Param("tel") String tel, @Param("id") String id);
+
+
 }
