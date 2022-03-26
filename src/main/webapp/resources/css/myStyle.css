@@ -50,7 +50,11 @@ option{
     display: grid;
     grid-template-rows: 300px 550px 1fr 200px;
 }
-
+.container {
+	display: grid;
+	grid-template-rows:300px 1fr 200px;
+	
+}
 /* 메인 배너 */
 .banner {
     height: 100%;
@@ -665,7 +669,8 @@ input[type='text'], input[type='password'] {
     display: none;
 }
 
-.findpw:hover, .findid:hover, .board_title h3{
+.findpw:hover, .findid:hover, .board_title h3:hover{
+	opacity:70%;
     cursor: pointer;
 }
 

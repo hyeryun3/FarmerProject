@@ -19,14 +19,14 @@
 
             let notice = {
                 No: 1,
-                title: '공지사항 입니다.',
-                aut: '스폰지밥',
+                title: '공지사항 CRUD구현전 입니다.',
+                aut: '프론트만 되어 있습니다.',
                 date: new Date().toLocaleDateString()
             }
             let qna = {
                 No: 1,
-                title: 'Q&A 입니다.',
-                aut: '뚱이',
+                title: 'Q&A CRUD구현전 입니다.',
+                aut: '프론트만 되어 있습니다.',
                 date: new Date().toLocaleDateString()
             }
             

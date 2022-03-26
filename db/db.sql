@@ -18,10 +18,3 @@ select count(*) from customer where id="1";
 alter table customer modify column id varbinary(30);
 alter table customer modify column password varbinary(30);
 alter table customer modify column email varbinary(30);
-
-@Update("update customer set email=${email}, password=${pw}, tel=${tel} where id=#{id}")
-
-update customer set email="ee@ee" where id="rabbith3";
-
-select * from customer where id="rabbith3";
-update customer set email="qq@qq", tel="01033333333", password="qqqqqqqq" where id="rabbith3";

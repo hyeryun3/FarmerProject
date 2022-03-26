@@ -123,9 +123,25 @@ public class MyController {
 	public String farmer_dic() {
 		return "farmer_dic";
 	}
+	@RequestMapping("product_dic.do")
+	public String product_dic() {
+		return "product_dic";
+	}
 	@RequestMapping("mypage.do")
 	public String mypage() {
 		return "mypage";
+	}
+	@RequestMapping("board_sell.do")
+	public String board_sell() {
+		return "board_sell";
+	}
+	@RequestMapping("farmer_info.do")
+	public String farmer_info() {
+		return "farmer_info";
+	}
+	@RequestMapping("search.do")
+	public String search() {
+		return "search";
 	}
 	
 	@PostMapping(value="aftermodify.do")

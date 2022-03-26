@@ -2,14 +2,14 @@
 
             let product = {
                 url: './img/1.jpg',
-                cate: '파프리카 | 토마토 | 블루베리 | 청경채',
-                title: '파프리카왕',
+                cate: 'C | R | U | D',
+                title: '구현전입니다.',
                 like: '1,000'
             }
             let product2 = {
                 url: './img/1.jpg',
-                cate: '청경채 | 양배추 | 양상추 | 엔다이브',
-                title: '샐러드왕',
+                cate: 'C | R | U | D',
+                title: '구현전입니다.',
                 like: '2,000'
             }
 
@@ -23,7 +23,7 @@
                 console.log(keys);
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.setAttribute('href','./productDetail.html')
+                a.setAttribute('href','./farmer_info.do')
 
                 for(let i =0; i<keys.length; i++){
                     const keyName = keys[i];

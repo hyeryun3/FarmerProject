@@ -4,7 +4,7 @@
                 const data = $('input[type="search"]').val();
 
                 if (evt.keyCode == 13) {
-                    location.assign('./productList.html')
+                    location.assign('./search.do')
                 }
             })
 })

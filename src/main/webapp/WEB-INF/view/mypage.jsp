@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>잘 키운 작물</title>
 <link rel="stylesheet" type="text/css"
-	href="./resources/css/myStyle.css">
+	href="./resources/css/myStyle.css?ver=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -25,6 +25,7 @@
 </head>
 
 <body>
+<div class="container">
 	<div class="header">
 		<div class="header_top">
 			<div class="header_top_right" style="margin-right: 1.3em">
@@ -43,7 +44,7 @@
 		<div class="header_logo">
 			<a href="./index.do">잘 키운 작물</a>
 		</div>
-		<form method="get" action="./productList.html">
+		<form method="get" action="./search.do">
 			<div class="search_div">
 				<i class="fa-solid fa-magnifying-glass"></i> <input
 					class="search-bar__input" type="search" placeholder="검색어를 입력하세요.">
@@ -117,7 +118,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 
 
 </body>
