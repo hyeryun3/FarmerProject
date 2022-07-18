@@ -53,4 +53,9 @@ public class MemberBiz {
 		System.out.println("회원정보수정 biz");
 		return dao.modifyinfo(email, password, tel, id);
 	}
+
+	public MemberVO findUser(String userId) {
+		System.out.println("회원정보 찾기 biz");
+		return dao.findUser(userId);
+	}
 }

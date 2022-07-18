@@ -23,37 +23,40 @@ public interface WebMapper {
 		@Result(property = "tel", column = "tel")
 	})
 	
-	@Select("select * from customer")
+	@Select("select * from user")
 	public List<MemberVO> listMember();
 	
 
 	
-	@Delete("delete from customer where id=#{id}")
+	@Delete("delete from user where id=#{id}")
 	public int deleteMember(String id);
 	
-	@Update("update customer set password=#{password},tel=#{tel} where id=#{id}")
+	@Update("update user set password=#{password},tel=#{tel} where id=#{id}")
 	public int updateMember(MemberVO vo);
 	
 
 	
 	
-	@Select("select password from customer where id=#{id} and email=#{email}")
+	@Select("select password from user where id=#{id} and email=#{email}")
 	public String findPw(@Param("id") String id, @Param("email") String email);
 
-	@Select("select id from customer where name=#{name} and email=#{email}")
+	@Select("select id from user where name=#{name} and email=#{email}")
 	public String findId(@Param("name") String name, @Param("email") String email);
 
-	@Insert("insert into customer(name,id,email,password,tel) values(#{name},#{id},#{email},#{password},#{tel})")
+	@Insert("insert into user(name,id,email,password,tel) values(#{name},#{id},#{email},#{password},#{tel})")
 	public int insertMember(MemberVO vo);
 	
-	@Select("select count(*) from customer where id=#{id}")
+	@Select("select count(*) from user where id=#{id}")
 	public int countId(String id);
 
 
-	@Select("select * from customer where id=#{id} and password=#{pw}")
+	@Select("select * from user where id=#{id} and password=#{pw}")
 	public MemberVO checkLogin(@Param("id") String id, @Param("pw") String pw);
+
+	@Select("select * from user where id=#{id}")
+	public MemberVO findUser(@Param("id") String id);
 	
-	@Update("update customer set email=#{email}, password=#{password}, tel=#{tel} where id=#{id}")
+	@Update("update user set email=#{email}, password=#{password}, tel=#{tel} where id=#{id}")
 	public int modify(@Param("email") String email, @Param("password") String password, @Param("tel") String tel, @Param("id") String id);
 
 

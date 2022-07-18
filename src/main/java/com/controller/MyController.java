@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,14 +35,7 @@ public class MyController {
 		int r =0;
 		if(e==0) {
 			r=biz.insertMember(vo);
-			session.setAttribute("loginname", vo.getName());
-			session.setAttribute("loginid", vo.getId());
-			session.setAttribute("email", vo.getEmail());
-			session.setAttribute("password", vo.getPassword());
-			String tel2 = vo.getTel().substring(3, 7);
-			String tel3 = vo.getTel().substring(7,11);
-			session.setAttribute("tel2", tel2);
-			session.setAttribute("tel3", tel3);
+			session.setAttribute("userId", vo.getId());
 			System.out.println(r + " 가입시켜줄게");
 		}else {
 			System.out.println(r + " 이미존재하는 아이디");
@@ -51,11 +45,9 @@ public class MyController {
 
 	
 	@GetMapping("index.do")
-	public ModelAndView loginMain() {
+	public String loginMain() {
 		System.out.println("회원가입 및 로그인 완료 후 메인으로");
-		ModelAndView view = new ModelAndView();
-		view.setViewName("index");
-		return view;
+		return "index";
 	}
 
 	@RequestMapping("login.do")
@@ -75,15 +67,8 @@ public class MyController {
 		
 		if (vo!=null) {
 			System.out.println("로그인 성공!");
-			session.setAttribute("loginname", vo.getName());
-			session.setAttribute("loginid", vo.getId());
-			session.setAttribute("email", vo.getEmail());
-			session.setAttribute("password", vo.getPassword());
-			String tel2 = vo.getTel().substring(3, 7);
-			String tel3 = vo.getTel().substring(7,11);
-			session.setAttribute("tel2", tel2);
-			session.setAttribute("tel3", tel3);
-			
+			session.setAttribute("userId", vo.getId());
+
 			str = "index";
 		} else {
 			System.out.println("로그인 실패!");
@@ -135,7 +120,17 @@ public class MyController {
 		return "product_dic";
 	}
 	@RequestMapping("mypage.do")
-	public String mypage() {
+	public String mypage(Model model,HttpSession session) {
+		String userId = (String) session.getAttribute("userId");
+		System.out.println(userId);
+		MemberVO vo = biz.findUser(userId);
+		String tel1 = vo.getTel().substring(0, 3);
+		String tel2 = vo.getTel().substring(3, 7);
+		String tel3 = vo.getTel().substring(7,11);
+		model.addAttribute("user",vo);
+		model.addAttribute("tel1",tel1);
+		model.addAttribute("tel2",tel2);
+		model.addAttribute("tel3",tel3);
 		return "mypage";
 	}
 	@RequestMapping("board_sell.do")
@@ -162,12 +157,6 @@ public class MyController {
 //		@RequestParam("email") String email 
 //		System.out.println(email);
 		int r = biz.modifyinfo(vo.getEmail(), vo.getPassword(), vo.getTel(), vo.getId());
-		session.setAttribute("email", vo.getEmail());
-		session.setAttribute("password", vo.getPassword());
-		String tel2 = vo.getTel().substring(3, 7);
-		String tel3 = vo.getTel().substring(7,11);
-		session.setAttribute("tel2", tel2);
-		session.setAttribute("tel3", tel3);
 		return new ModelAndView("result", "r", r);
 	}
 }

@@ -29,11 +29,11 @@
 	<div class="header">
 		<div class="header_top">
 			<div class="header_top_right" style="margin-right: 1.3em">
-				<c:if test="${loginid ==null}">
+				<c:if test="${userId ==null}">
 					<a href="login.do">로그인</a> | <a href="join.do">회원가입</a>
 				</c:if>
-				<c:if test="${loginid != null}">
-					<a href="mypage.do">${loginid }</a> | <a href="logout.do">로그아웃</a>
+				<c:if test="${userId != null}">
+					<a href="mypage.do">${userId }</a> | <a href="logout.do">로그아웃</a>
 				</c:if>
 			</div>
 			<div class="header_menu">
@@ -59,13 +59,13 @@
 			<fieldset>
 				<legend>회원 정보 수정</legend>
 				<form class="join">
-					이름 <input type="text" name="name" id="name" value="${loginname}"
+					이름 <input type="text" name="name" id="name" value="${user.name}"
 						disabled> <span title="name"></span><br> 아이디 <input
-						type="text" name="id" id="id" value="${loginid}" disabled>
+						type="text" name="id" id="id" value="${user.id}" disabled>
 					<span title="id"></span><br> 이메일 <input type="text"
-						name="email" id="email" value="${email}"> <span
+						name="email" id="email" value="${user.email}"> <span
 						title="email"></span><br> 비밀번호 <input type="password"
-						name="pw" id="pw" value="${password}"> <span title="pw"></span><br>
+						name="pw" id="pw" value="${user.password}"> <span title="pw"></span><br>
 					비밀번호 확인 <input type="password" name="pw2"
 						placeholder="영문/숫자/특수문자 조합 8~20자"> <span title="pw2"></span><br>
 					<div>

@@ -28,11 +28,11 @@
 		<div class="header">
 			<div class="header_top">
 				<div class="header_top_right" style="margin-right: 1.3em">
-					<c:if test="${loginid ==null}">
+					<c:if test="${userId ==null}">
 						<a href="login.do">로그인</a> | <a href="join.do">회원가입</a>
 					</c:if>
-					<c:if test="${loginid != null}">
-						<a href="mypage.do">${loginid }</a> | <a href="logout.do">로그아웃</a>
+					<c:if test="${userId != null}">
+						<a href="mypage.do">${userId }</a> | <a href="logout.do">로그아웃</a>
 					</c:if>
 				</div>
 				<div class="header_menu">

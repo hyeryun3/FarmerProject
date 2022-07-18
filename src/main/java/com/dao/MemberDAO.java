@@ -145,4 +145,12 @@ public class MemberDAO {
 		return r;
 	}
 
+	public MemberVO findUser(String userId) {
+		MemberVO vo = new MemberVO();
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			vo = mapper.findUser(userId);
+		}
+		return vo;
+	}
 }
