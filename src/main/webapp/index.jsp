@@ -16,9 +16,9 @@
 <script src="https://kit.fontawesome.com/4e80b85547.js"	crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
-<script>
+<%--<script>
 alert("과제 관련하여!\n 회원가입, 로그인, 마이페이지만 CRUD구현이 완성되어 있습니다. \n나머지 페이지는 연결만 되어있습니다.. ")
-</script>
+</script>--%>
 <body>
 	<div class="main_container">
 		<div class="header">
