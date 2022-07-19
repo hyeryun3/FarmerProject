@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -25,7 +26,7 @@ public class MemberDAO {
 		}
 	}
 
-//	2
+	//	2
 	public List<MemberVO> listMember() {
 		List<MemberVO> all = null;
 		try (SqlSession session = factory.openSession()) {
@@ -40,7 +41,7 @@ public class MemberDAO {
 		MemberVO vo = new MemberVO();
 		try (SqlSession session = factory.openSession()) {
 			WebMapper mapper = session.getMapper(WebMapper.class);
-			vo = mapper.checkLogin(id,pw);
+			vo = mapper.checkLogin(id, pw);
 		}
 		return vo;
 	}
@@ -129,21 +130,6 @@ public class MemberDAO {
 		return r;
 	}
 
-	public int modifyinfo(String email, String password, String tel, String id) {
-		int r = 0;
-		try (SqlSession session = factory.openSession()) {
-			WebMapper mapper = session.getMapper(WebMapper.class);
-			r=mapper.modify(email, password, tel, id);
-			System.out.println("modify 연결완료");
-			if (r > 0) {
-				session.commit();
-				System.out.println("수정 완료");
-			} else {
-				session.rollback();
-			}
-		}
-		return r;
-	}
 
 	public MemberVO findUser(String userId) {
 		MemberVO vo = new MemberVO();
@@ -152,5 +138,12 @@ public class MemberDAO {
 			vo = mapper.findUser(userId);
 		}
 		return vo;
+	}
+
+	public void writeQna(String title, String text, LocalDateTime dateTime,int id) {
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			mapper.writeQna(title, text, dateTime, id);
+		}
 	}
 }

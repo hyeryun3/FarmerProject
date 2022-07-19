@@ -1,5 +1,6 @@
 package com.biz;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +50,19 @@ public class MemberBiz {
 		return dao.existMember(id);
 	}
 
-	public int modifyinfo(String email, String password, String tel, String id) {
+	public int updateMember(MemberVO vo) {
 		System.out.println("회원정보수정 biz");
-		return dao.modifyinfo(email, password, tel, id);
+		return dao.updateMember(vo);
 	}
 
 	public MemberVO findUser(String userId) {
 		System.out.println("회원정보 찾기 biz");
 		return dao.findUser(userId);
+	}
+
+	public void writeQna(String title, String text, LocalDateTime dateTime, String userId){
+		System.out.println("게시물작성 biz");
+		MemberVO user = dao.findUser(userId);
+		dao.writeQna(title,text,dateTime, user.getId());
 	}
 }
