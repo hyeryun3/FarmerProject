@@ -106,7 +106,7 @@ jQuery(document).ready(function() {
 			success: function(data){
 				if(data.r == 1){
 					alert("회원정보가 수정되었습니다.");
-					location.replace('./index.do');
+					history.go(0)
 				}
 			},
 			error: function (request, status, error){
