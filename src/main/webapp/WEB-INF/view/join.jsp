@@ -27,7 +27,7 @@
 						<a href="login.do" >로그인</a> | <a href="join.do">회원가입</a>
 					</c:if>
 					<c:if test = "${userId != null}">
-					<a href="mypage.do">${userId }</a> | <a href="logout.do">로그아웃</a>
+					<a href="mypage.do">${userId}</a> | <a href="logout.do">로그아웃</a>
 					</c:if>
 				</div>
 				<div class="header_menu">
