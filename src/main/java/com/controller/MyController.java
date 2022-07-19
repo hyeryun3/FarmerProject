@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 
 @Controller
 @RequiredArgsConstructor
 public class MyController {
 
 	private final MemberBiz biz;
+	static String userId;
 
 	@GetMapping("join.do")
 	public String join() {
@@ -37,16 +39,21 @@ public class MyController {
 	}
 
 	@PostMapping(value="afterjoin.do")
-	public ModelAndView afterjoin(MemberVO vo, HttpSession session) {
+	public ModelAndView afterjoin(MemberVO vo) {
 		System.out.println("회원가입컨트롤러");
-		int e = biz.existMember(vo.getId());
+		int e = biz.existMember(vo.getUserId());
 		int r =0;
 		if(e==0) {
-			r=biz.insertMember(vo);
-			session.setAttribute("userId", vo.getId());
-			System.out.println(r + " 가입시켜줄게");
+			int w = biz.findUserByEmail(vo.getEmail());
+			if(w == 0){
+				r=biz.insertMember(vo);
+				System.out.println(r + " 가입시켜줄게");
+			}else{
+				r=-1;
+				System.out.println(r+ " 이미 존재하는 이메일");
+			}
 		}else {
-			System.out.println(r + " 이미존재하는 아이디");
+			System.out.println(r + " 이미 존재하는 아이디");
 		}
 		return new ModelAndView("result","r",r);
 	}
@@ -60,7 +67,8 @@ public class MyController {
 
 		if (vo!=null) {
 			System.out.println("로그인 성공!");
-			session.setAttribute("userId", vo.getId());
+			session.setAttribute("userId", id);
+			userId = (String) session.getAttribute("userId");
 			str = "index";
 		} else {
 			System.out.println("로그인 실패!");
@@ -92,9 +100,7 @@ public class MyController {
 	}
 
 	@GetMapping("mypage.do")
-	public String mypage(Model model,HttpSession session) {
-		String userId = (String) session.getAttribute("userId");
-		System.out.println(userId);
+	public String mypage(Model model) {
 		MemberVO vo = biz.findUser(userId);
 		String tel1 = vo.getTel().substring(0, 3);
 		String tel2 = vo.getTel().substring(3, 7);
@@ -106,11 +112,11 @@ public class MyController {
 		return "mypage";
 	}
 
-	@PostMapping(value="aftermodify.do")
+	@PostMapping("updateMember.do")
 	public ModelAndView afterModify(MemberVO vo) {
 		System.out.println("회원정보수정 컨트롤러");
 
-		int r = biz.modifyinfo(vo.getEmail(), vo.getPassword(), vo.getTel(), vo.getId());
+		int r = biz.updateMember(vo);
 		return new ModelAndView("result", "r", r);
 	}
 	
@@ -121,6 +127,13 @@ public class MyController {
 	@GetMapping("boardform.do")
 	public String boardform() {
 		return "boardform";
+	}
+
+	@PostMapping("writeQna")
+	public void writeQna(@RequestParam("title") String title, @RequestParam("textarea") String text){
+		System.out.println("게시물작성 컨트롤러");
+		LocalDateTime dateTime = LocalDateTime.now();
+		biz.writeQna(title,text,dateTime,userId);
 	}
 	@GetMapping("farmer_dic.do")
 	public String farmer_dic() {

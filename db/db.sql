@@ -1,10 +1,13 @@
 create table user (
 	name varchar(30) not null,
 	id varchar(30) not null primary key,
+	user_id varchar(30) not null,
 	email varchar(30) not null,
 	password varchar(30) not null,
 	tel varchar(30) not null
 );
+alter table user modify column user_id varchar(30) unique;
+alter table user modify column email varchar(30) unique;
 
 create table qna (
                      id bigint auto_increment primary key,

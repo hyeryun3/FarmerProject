@@ -27,13 +27,25 @@ public interface WebMapper {
 	@Select("select * from user")
 	public List<MemberVO> listMember();
 
+	// 회원가입
 	@Insert("insert into user(name,user_id,email,password,tel) values(#{name},#{userId},#{email},#{password},#{tel})")
 	public int insertMember(MemberVO vo);
 
-	@Update("update user set password=#{password},tel=#{tel} where user_id=#{userId}")
+	// 로그인
+	@Select("select * from user where user_id=#{userId} and password=#{pw}")
+	public MemberVO checkLogin(@Param("userId") String userId, @Param("pw") String pw);
+
+	// 비밀번호 찾기
+	@Select("select password from user where user_id=#{id} and email=#{email}")
+	public String findPw(@Param("id") String id, @Param("email") String email);
+
+	// 아이디 찾기
+	@Select("select user_id from user where name=#{name} and email=#{email}")
+	public String findId(@Param("name") String name, @Param("email") String email);
+
+	// 회원정보 수정
+	@Update("update user set email=#{email},password=#{password},tel=#{tel} where user_id=#{userId}")
 	public int updateMember(MemberVO vo);
-
-
 
 	
 	@Delete("delete from user where user_id=#{id}")
@@ -43,24 +55,18 @@ public interface WebMapper {
 	
 
 	
-	
-	@Select("select password from user where user_id=#{id} and email=#{email}")
-	public String findPw(@Param("id") String id, @Param("email") String email);
 
-	@Select("select user_id from user where name=#{name} and email=#{email}")
-	public String findId(@Param("name") String name, @Param("email") String email);
-
-
-	
 	@Select("select count(*) from user where user_id=#{id}")
 	public int countId(String id);
 
 
-	@Select("select * from user where user_id=#{userId} and password=#{pw}")
-	public MemberVO checkLogin(@Param("userId") String userId, @Param("pw") String pw);
 
 	@Select("select * from user where user_id=#{userId}")
 	public MemberVO findUser(@Param("userId") String userId);
+
+	@Select("select count(*) from user where email=#{email}")
+	public int findUserByEmail(@Param("email") String email);
+
 
 	@Insert("insert into qna(title,text,write_date,user_id) values(#{title},#{text},#{write_date},#{user_id})")
 	public int writeQna(@Param("title") String title, @Param("text") String text, @Param("write_date") LocalDateTime dateTime, @Param("user_id") int id);

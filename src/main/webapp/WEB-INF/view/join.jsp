@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>잘 키운 작물</title>
-<link rel="stylesheet" type="text/css" href="./resources/css/myStyle.css?ver=1">
+<link rel="stylesheet" type="text/css" href="./resources/css/myStyle.css?after">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto+Serif:wght@800&display=swap"	rel="stylesheet">
@@ -70,7 +70,9 @@
                                 <option>010</option>
                                 <option>011</option>
                                 <option>016</option>
-                            </select> <input type="text" id="tel2" maxlength="4"><input type="text" id="tel3" maxlength="4">
+                            </select>
+                            <input type="text" id="tel2" maxlength="4">
+                            <input type="text" id="tel3" maxlength="4">
                         </div>
                         <span title="tel"></span><br>
                         <input type="checkbox" id="checking" > 이용약관 및 개인정보수집 및 이용에 모두 동의합니다.

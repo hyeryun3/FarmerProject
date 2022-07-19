@@ -467,19 +467,9 @@ input[type='text'], input[type='password'] {
     margin-bottom: 0.4rem;
 }
 
-#mail1 {
-    display: inline;
-    width:32.56249%
-}
-
 #tel1, #tel2, #tel3{
     display: inline-block;
     width:32%;
-    /* margin: 0; */
-}
-
-#tel2, #tel3{
-    margin-right: 0.25rem;
 }
 
 #tel1 {

@@ -47,14 +47,10 @@ jQuery(document).ready(function() {
 		}
 
 		let pw = document.querySelector('.join input[name="pw"]');
-		if (!pw.value) {
-			$('.join span[title="pw"]').show().html('비밀번호를 입력해주세요.');
-			pw.focus();
-			evt.preventDefault();
-			return;
-		}
-		if (!pw.value || !(pw.value.length > 7 && pw.value.length < 21)) {
-			$('.join span[title="pw"]').show().html('비밀번호를 다시 입력해주세요.');
+
+		let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
+		if (!pw.value || !(pw.value.length > 7 && pw.value.length < 21) || !check.test(pw.value)) {
+			$('.join span[title="pw"]').show().html('영문/숫자/특수문자 조합 8~20자');
 			pw.focus();
 			pw.value = '';
 			evt.preventDefault();
@@ -114,15 +110,17 @@ jQuery(document).ready(function() {
 			type: "POST",
 			url: "afterjoin.do",
 			dataType: "json",
-			data: { name: name, id: id, email: email, password: pw, tel: tel },
+			data: { name: name, userId: id, email: email, password: pw, tel: tel },
 			success: function(data){
 				if(data.r == 1){
 					alert("회원가입이 완료되었습니다.");
-					location.replace('./index.do');
-				}
-				if(data.r == 0){
+					location.replace('./login.do');
+				}else if(data.r == 0){
 					$('#id').focus();
 					alert("이미 존재하는 아이디입니다.");
+				}else{
+					$('#email').focus();
+					alert("이미 존재하는 이메일입니다.");
 				}
 			}			
 		});

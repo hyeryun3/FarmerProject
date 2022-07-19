@@ -2,7 +2,6 @@ jQuery(document).ready(function() {
 
 	$('#joinbtn').click(function(evt) {
 		
-		console.log("눌렸니");
 		evt.preventDefault();
 		$('span').hide();
 
@@ -14,18 +13,18 @@ jQuery(document).ready(function() {
 			return;
 		}
 
-		let id = document.querySelector('.join input[name="id"]');
-		if (!id.value) {
-			$('.join span[title="id"]').show().html('아이디를 입력해주세요');
-			id.focus();
+		let userId = document.querySelector('.join input[name="userId"]');
+		if (!userId.value) {
+			$('.join span[title="userId"]').show().html('아이디를 입력해주세요');
+			userId.focus();
 			evt.preventDefault();
 			return;
 		}
 
-		if (/\W/.test(id.value)) {
-			$('span[title="id"]').show().html('아이디는 알파벳, 숫자, 언더바(_)만 가능합니다.');
-			id.focus();
-			id.value = '';
+		if (/\W/.test(userId.value)) {
+			$('span[title="userId"]').show().html('아이디는 알파벳, 숫자, 언더바(_)만 가능합니다.');
+			userId.focus();
+			userId.value = '';
 			evt.preventDefault();
 			return;
 		}
@@ -48,14 +47,10 @@ jQuery(document).ready(function() {
 		}
 
 		let pw = document.querySelector('.join input[name="pw"]');
-		if (!pw.value) {
-			$('.join span[title="pw"]').show().html('비밀번호를 입력해주세요.');
-			pw.focus();
-			evt.preventDefault();
-			return;
-		}
-		if (!pw.value || !(pw.value.length > 7 && pw.value.length < 21)) {
-			$('.join span[title="pw"]').show().html('비밀번호를 다시 입력해주세요.');
+
+		let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
+		if (!pw.value || !(pw.value.length > 7 && pw.value.length < 21) || !check.test(pw.value)) {
+			$('.join span[title="pw"]').show().html('영문/숫자/특수문자 조합 8~20자');
 			pw.focus();
 			pw.value = '';
 			evt.preventDefault();
@@ -96,7 +91,7 @@ jQuery(document).ready(function() {
 			return;
 		}
 
-		id = $('#id').val();
+		userId = $('#userId').val();
 		email = $('#email').val();
 		pw = $('#pw').val();
 		tel1 = $('#tel1').val();
@@ -105,15 +100,20 @@ jQuery(document).ready(function() {
 		let tel = tel1 + tel2 + tel3 + "";
 		$.ajax({
 			type: "POST",
-			url: "aftermodify.do",
-			data: { email: email, password: pw, tel: tel, id:id },
+			url: "updateMember.do",
+			dataType: "json",
+			data: { email: email, password: pw, tel: tel, userId:userId },
 			success: function(data){
-				console.log("넘어갔니");
 				if(data.r == 1){
 					alert("회원정보가 수정되었습니다.");
 					location.replace('./index.do');
 				}
-			}			
+			},
+			error: function (request, status, error){
+				console.log("code: " + request.status)
+				console.log("message: " + request.responseText)
+				console.log("error: " + error);
+			}
 		});
 		
 		
