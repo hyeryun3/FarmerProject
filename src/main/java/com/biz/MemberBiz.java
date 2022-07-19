@@ -1,13 +1,11 @@
 package com.biz;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
+import com.dao.MemberDAO;
+import com.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dao.MemberDAO;
-import com.vo.MemberVO;
+import java.time.LocalDateTime;
 
 @Service
 public class MemberBiz {
@@ -58,6 +56,11 @@ public class MemberBiz {
 	public MemberVO findUser(String userId) {
 		System.out.println("회원정보 찾기 biz");
 		return dao.findUser(userId);
+	}
+
+	public int findUserByEmail(String email){
+		System.out.println("이메일로 회원정보 찾기 biz");
+		return dao.findUserByEmail(email);
 	}
 
 	public void writeQna(String title, String text, LocalDateTime dateTime, String userId){

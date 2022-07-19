@@ -1,16 +1,15 @@
 package com.dao;
 
-import java.io.InputStream;
-import java.time.LocalDateTime;
-import java.util.List;
-
+import com.vo.MemberVO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.stereotype.Repository;
 
-import com.vo.MemberVO;
+import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public class MemberDAO {
@@ -138,6 +137,15 @@ public class MemberDAO {
 			vo = mapper.findUser(userId);
 		}
 		return vo;
+	}
+
+	public int findUserByEmail(String email){
+		int r = 0;
+		try (SqlSession session = factory.openSession()){
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			r = mapper.findUserByEmail(email);
+		}
+		return r;
 	}
 
 	public void writeQna(String title, String text, LocalDateTime dateTime,int id) {

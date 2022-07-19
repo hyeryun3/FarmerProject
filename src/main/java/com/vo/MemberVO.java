@@ -1,11 +1,9 @@
 package com.vo;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class MemberVO {
 	private int id;
 	private String name;
