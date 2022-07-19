@@ -151,7 +151,12 @@ public class MemberDAO {
 	public void writeQna(String title, String text, LocalDateTime dateTime,int id) {
 		try (SqlSession session = factory.openSession()) {
 			WebMapper mapper = session.getMapper(WebMapper.class);
-			mapper.writeQna(title, text, dateTime, id);
+			int r = mapper.writeQna(title, text, dateTime, id);
+			if (r > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
 		}
 	}
 }

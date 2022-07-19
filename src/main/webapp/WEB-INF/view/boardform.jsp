@@ -16,11 +16,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto+Serif:wght@800&display=swap"
 	rel="stylesheet">
-<script src="https://kit.fontawesome.com/4e80b85547.js"
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="./resources/js/boardform.js"></script>
+<script src="https://kit.fontawesome.com/4e80b85547.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="./resources/js/boardform.js"></script>
 </head>
 
 <body>
@@ -62,11 +60,11 @@
 						작성자 <input type="text" name="userId" value="${userId}" disabled>
 						제목 <input type="text" name="title" placeholder="제목을 입력해주세요.">
 
-						<textarea placeholder="문의 내용을 작성해주세요." name="content">CRUD 구현 전 입니다.</textarea>
+						<textarea placeholder="문의 내용을 작성해주세요." name="content"></textarea>
 					</form>
-					<button name="button">문의등록</button>
+					<button id="button">문의등록</button>
+				</fieldset>
 			</div>
-			</fieldset>
 		</div>
 
 

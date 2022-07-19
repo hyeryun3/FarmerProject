@@ -129,11 +129,12 @@ public class MyController {
 		return "boardform";
 	}
 
-	@PostMapping("writeQna")
-	public void writeQna(@RequestParam("title") String title, @RequestParam("textarea") String text){
+	@PostMapping("writeQna.do")
+	public ModelAndView writeQna(@RequestParam("title") String title, @RequestParam("textarea") String text){
 		System.out.println("게시물작성 컨트롤러");
 		LocalDateTime dateTime = LocalDateTime.now();
 		biz.writeQna(title,text,dateTime,userId);
+		return new ModelAndView("result", "r", "");
 	}
 	@GetMapping("farmer_dic.do")
 	public String farmer_dic() {

@@ -47,7 +47,12 @@ public interface WebMapper {
 	@Update("update user set email=#{email},password=#{password},tel=#{tel} where user_id=#{userId}")
 	public int updateMember(MemberVO vo);
 
-	
+	// 문의글 등록
+	@Insert("insert into qna(title,text,write_date,user_id) values(#{title},#{text},#{write_date},#{user_id})")
+	public int writeQna(@Param("title") String title, @Param("text") String text, @Param("write_date") LocalDateTime dateTime, @Param("user_id") int id);
+
+
+
 	@Delete("delete from user where user_id=#{id}")
 	public int deleteMember(String id);
 	
@@ -68,7 +73,5 @@ public interface WebMapper {
 	public int findUserByEmail(@Param("email") String email);
 
 
-	@Insert("insert into qna(title,text,write_date,user_id) values(#{title},#{text},#{write_date},#{user_id})")
-	public int writeQna(@Param("title") String title, @Param("text") String text, @Param("write_date") LocalDateTime dateTime, @Param("user_id") int id);
 
 }
