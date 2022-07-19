@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto+Serif:wght@800&display=swap"
         rel="stylesheet">
-   	<link rel="stylesheet" type="text/css" href="./resources/css/myStyle.css?ver=1">
+   	<link rel="stylesheet" type="text/css" href="./resources/css/myStyle.css?after">
     <script src="https://kit.fontawesome.com/4e80b85547.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="./resources/js/board.js"></script>

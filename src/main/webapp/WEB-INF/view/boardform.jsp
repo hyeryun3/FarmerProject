@@ -11,7 +11,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="./myStyle.css"> -->
 <title>잘 키운 작물</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="stylesheet" type="text/css" href="./resources/css/myStyle.css?ver=1">
+	<link rel="stylesheet" type="text/css" href="./resources/css/myStyle.css?after">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto+Serif:wght@800&display=swap"
@@ -59,7 +59,7 @@
 				<fieldset>
 					<legend>문의등록</legend>
 					<form class="qnaform">
-						작성자 <input type="text" name="name" value="${loginname}" disabled>
+						작성자 <input type="text" name="userId" value="${userId}" disabled>
 						제목 <input type="text" name="title" placeholder="제목을 입력해주세요.">
 
 						<textarea placeholder="문의 내용을 작성해주세요." name="content">CRUD 구현 전 입니다.</textarea>
