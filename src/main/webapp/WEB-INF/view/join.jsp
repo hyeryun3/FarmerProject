@@ -88,8 +88,8 @@
                         </div>
                         <button name="button" id="joinbtn">회원가입</button>
                     </form>
-                </div>
-            </fieldset>
+                </fieldset>
+            </div>
         </div>
 
 
