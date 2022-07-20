@@ -3,6 +3,7 @@ package com.dao;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.vo.BoardVO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -50,6 +51,11 @@ public interface WebMapper {
 	// 문의글 등록
 	@Insert("insert into qna(title,text,write_date,user_id) values(#{title},#{text},#{write_date},#{user_id})")
 	public int writeQna(@Param("title") String title, @Param("text") String text, @Param("write_date") LocalDateTime dateTime, @Param("user_id") int id);
+
+	// 문의글 조회
+	@Select("select * from qna")
+	public List<BoardVO> listQna();
+
 
 
 

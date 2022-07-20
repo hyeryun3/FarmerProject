@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.vo.BoardVO;
 import com.vo.MemberVO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -159,4 +160,15 @@ public class MemberDAO {
 			}
 		}
 	}
+
+	public List<BoardVO> listQna(){
+		List<BoardVO> all = null;
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			all = mapper.listQna();
+//			System.out.println(all.get(0).getId());
+		}
+		return all;
+	}
+
 }

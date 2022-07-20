@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.biz.MemberBiz;
+import com.vo.BoardVO;
 import com.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -122,8 +124,19 @@ public class MyController {
 	
 	@GetMapping("board.do")
 	public String goBoard() {
+		System.out.println("게시판 컨트롤러");
+
 		return "board";
 	}
+
+	@PostMapping("listQna.do")
+	public ModelAndView listQna(Model model) {
+		System.out.println("게시판리스트 ajax 컨트롤러");
+
+		List<BoardVO> listQna = biz.listQna();
+		return new ModelAndView("result","listQna",listQna);
+	}
+
 	@GetMapping("boardform.do")
 	public String boardform() {
 		return "boardform";

@@ -1,11 +1,13 @@
 package com.biz;
 
 import com.dao.MemberDAO;
+import com.vo.BoardVO;
 import com.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class MemberBiz {
@@ -67,5 +69,11 @@ public class MemberBiz {
 		System.out.println("게시물작성 biz");
 		MemberVO user = dao.findUser(userId);
 		dao.writeQna(title,text,dateTime, user.getId());
+	}
+
+	public List<BoardVO> listQna(){
+		System.out.println("qna리스트 biz");
+		List<BoardVO> listQna = dao.listQna();
+		return listQna;
 	}
 }
