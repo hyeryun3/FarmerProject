@@ -27,10 +27,6 @@ jQuery(document).ready(function () {
                 qnaSize = data.listQna.length
                 for (let i = 0; i < qnaSize; i++) {
                     data_qna.push(data.listQna[i]);
-                    console.log(data_qna[i].writeDate)
-                    console.log(Object.values(data_qna[i].writeDate))
-                    // console.log(data_qna[i].writeDate.getKey("dayOfYear"))
-
                 }
                 for (i = 0; i < qnaSize; i++) {
                     let tr = document.createElement('tr');
