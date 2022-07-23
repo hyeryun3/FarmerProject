@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
 			data: {title:title.value, textarea:textarea.value},
 			success: function(data){
 				alert('문의글이 등록되었습니다.')
-				history.go(-1);
+				location.replace("board.do")
 			},
 			error: function (request, status, error){
 				console.log("code: " + request.status)
