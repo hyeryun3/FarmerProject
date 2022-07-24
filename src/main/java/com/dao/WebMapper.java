@@ -16,14 +16,15 @@ import org.springframework.stereotype.Component;
 import com.vo.MemberVO;
 
 public interface WebMapper {
-
+/*
 	@Results({
 		@Result(property = "name", column = "name"),
 		@Result(property = "userId", column = "user_id"),
 		@Result(property = "email", column = "email"),
 		@Result(property = "password", column = "password"),
-		@Result(property = "tel", column = "tel")
-	})
+		@Result(property = "tel", column = "tel"),
+		@Result(property = "writeDate", column = "write_date")
+	})*/
 	
 	@Select("select * from user")
 	public List<MemberVO> listMember();
