@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -127,6 +128,19 @@ public class MyController {
 		System.out.println("게시판 컨트롤러");
 
 		return "board";
+	}
+
+//	@GetMapping("boardDetail")
+//	public String boardInfo() {
+//		System.out.println("게시판 상세 컨트롤러..?");
+//		return "boardDetail";
+//	}
+
+	@GetMapping("boardDetail/{idx}")
+	public String boardDetail(@PathVariable("idx") int idx) {
+		System.out.println("게시판 상세 컨트롤러");
+		System.out.println(idx);
+		return "boardDetail";
 	}
 
 	@PostMapping("listQna.do")
