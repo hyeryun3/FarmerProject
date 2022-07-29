@@ -35,7 +35,10 @@ jQuery(document).ready(function () {
                     let author = document.createElement('td');
                     let writeDate = document.createElement('td');
                     let text = document.createTextNode(i+1);
-                    idx.appendChild(text)
+                    let a = document.createElement('a');
+                    a.setAttribute('href','boardDetail/'+(i+1))
+                    a.appendChild(text)
+                    idx.appendChild(a)
 
                     text = document.createTextNode(data_qna[i].title);
                     title.appendChild(text);
