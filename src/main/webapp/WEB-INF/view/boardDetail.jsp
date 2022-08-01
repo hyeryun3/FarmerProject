@@ -11,14 +11,14 @@
 <!-- <link rel="stylesheet" type="text/css" href="./myStyle.css"> -->
 <title>잘 키운 작물</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="stylesheet" type="text/css" href="./resources/css/myStyle.css?after">
+	<link rel="stylesheet" type="text/css" href="/resources/css/myStyle.css?after">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto+Serif:wght@800&display=swap"
 	rel="stylesheet">
 <script src="https://kit.fontawesome.com/4e80b85547.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="./resources/js/boardform.js"></script>
+<script src="/resources/js/boardform.js"></script>
 </head>
 
 <body>
@@ -34,15 +34,15 @@
 					</c:if>
 				</div>
 				<div class="header_menu">
-					<a href="./product_dic.do">농산물 사전</a> <a
-						href="./farmer_dic.do">농부 사전</a> <a href="./board_sell.do">농산물
-						판매</a> <a href="./board.do">공유게시판</a>
+					<a href="../product_dic.do">농산물 사전</a> <a
+						href="../farmer_dic.do">농부 사전</a> <a href="../board_sell.do">농산물
+						판매</a> <a href="../board.do">공유게시판</a>
 				</div>
 			</div>
 			<div class="header_logo">
-				<a href="./index.do">잘 키운 작물</a>
+				<a href="../index.do">잘 키운 작물</a>
 			</div>
-			<form method="get" action="./search.do">
+			<form method="get" action="../search.do">
 				<div class="search_div">
 					<i class="fa-solid fa-magnifying-glass"></i> <input
 						class="search-bar__input" type="search" placeholder="검색어를 입력하세요.">

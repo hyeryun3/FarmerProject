@@ -10,8 +10,12 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="com.*" />
-
-	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" 
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+<!--	<mvc:resources mapping="/resources/css/**" location="/resources/css/" />-->
+<!--	<mvc:resources mapping="/resources/images/**" location="/resources/images/" />-->
+<!--	<mvc:resources mapping="/resources/js/**" location="/resources/js/" />-->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
 		p:driverClass="com.mysql.cj.jdbc.Driver" p:url="jdbc:mysql://localhost:3306/mysql?characterEncoding=UTF-8&amp;serverTimezone=UTC" 
 		p:username="heidi1203" p:password="hyeryun1203" /> <bean id="jdbcTemplate" 
 		class="org.springframework.jdbc.core.JdbcTemplate"> <property name="dataSource" 

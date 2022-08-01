@@ -33,15 +33,15 @@
 					</c:if>
 				</div>
 				<div class="header_menu">
-					<a href="./product_dic.do">농산물 사전</a> <a
-						href="./farmer_dic.do">농부 사전</a> <a href="./board_sell.do">농산물
-						판매</a> <a href="./board.do">공유게시판</a>
+					<a href="product_dic.do">농산물 사전</a> <a
+						href="farmer_dic.do">농부 사전</a> <a href="board_sell.do">농산물
+						판매</a> <a href="board.do">공유게시판</a>
 				</div>
 			</div>
 			<div class="header_logo">
-				<a href="./index.do">잘 키운 작물</a>
+				<a href="index.do">잘 키운 작물</a>
 			</div>
-			<form method="get" action="./search.do">
+			<form method="get" action="search.do">
 				<div class="search_div">
 					<i class="fa-solid fa-magnifying-glass"></i> <input
 						class="search-bar__input" type="search" placeholder="검색어를 입력하세요.">
@@ -55,7 +55,7 @@
             <div class="board">
                 <div class="board_title">
                     <h3 name="board_notice">공지사항</h3>
-                    <h3 name="board_qna">Q&A</h3>
+                    <h3 name="board_user">자유게시판</h3>
                 </div>
 
                 <div class="board_table_notice">

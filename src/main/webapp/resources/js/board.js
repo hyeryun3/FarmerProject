@@ -13,7 +13,7 @@ jQuery(document).ready(function () {
         if (this.getAttribute('name') === 'board_notice') {
             document.querySelector('.board_table_notice').style.display = 'block';
             document.querySelector('.board_table_qna').style.display = 'none';
-        } else if (this.getAttribute('name') === 'board_qna') {
+        } else if (this.getAttribute('name') === 'board_user') {
             document.querySelector('.board_table_qna').style.display = 'block';
             document.querySelector('.board_table_notice').style.display = 'none';
         }
