@@ -7,19 +7,8 @@ jQuery(document).ready(function () {
     $('.board_table_qna > button').on('click', function (evt) {
         location.assign('./boardform.do');
     })
-
-    $('h3[name^="board_"]').click(function () {
-
-        if (this.getAttribute('name') === 'board_notice') {
-            document.querySelector('.board_table_notice').style.display = 'block';
-            document.querySelector('.board_table_qna').style.display = 'none';
-        } else if (this.getAttribute('name') === 'board_user') {
-            document.querySelector('.board_table_qna').style.display = 'block';
-            document.querySelector('.board_table_notice').style.display = 'none';
-        }
-
-        if(tempCnt==0){
-            $.ajax({
+    if(tempCnt==0){
+        $.ajax({
             type: "POST",
             url: "listQna.do",
             dataType: "json",
@@ -60,8 +49,20 @@ jQuery(document).ready(function () {
 
             }
         })
+    }
+
+    /*$('h3[name^="board_"]').click(function () {
+
+        if (this.getAttribute('name') === 'board_notice') {
+            document.querySelector('.board_table_notice').style.display = 'block';
+            document.querySelector('.board_table_qna').style.display = 'none';
+        } else if (this.getAttribute('name') === 'board_user') {
+            document.querySelector('.board_table_qna').style.display = 'block';
+            document.querySelector('.board_table_notice').style.display = 'none';
         }
-    })
+
+
+    })*/
 
 
 })

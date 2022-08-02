@@ -659,7 +659,7 @@ input[type='text'], input[type='password'] {
     display: none;
 }
 
-.findpw:hover, .findid:hover, .board_title h3:hover{
+.findpw:hover, .findid:hover/*, .board_title h3:hover*/{
 	opacity:70%;
     cursor: pointer;
 }
@@ -956,7 +956,7 @@ table>thead>tr>th{
 }
 
 .board_table_rev, .board_table_qna{
-    display:none;
+    display:block;
 }
 
 .qna fieldset{

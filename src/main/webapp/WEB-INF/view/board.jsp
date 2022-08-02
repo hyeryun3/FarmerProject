@@ -54,11 +54,11 @@
         <div class="main">
             <div class="board">
                 <div class="board_title">
-                    <h3 name="board_notice">공지사항</h3>
+<%--                    <h3 name="board_notice">공지사항</h3>--%>
                     <h3 name="board_user">자유게시판</h3>
                 </div>
 
-                <div class="board_table_notice">
+                <%--<div class="board_table_notice">
                     <table>
                         <thead>
                             <tr>
@@ -70,7 +70,7 @@
                         </thead>
                         <tbody id="tbody" class="notice_table"></tbody>
                     </table>
-                </div>
+                </div>--%>
                 <div class="board_table_qna">
                     <table>
                         <thead>
