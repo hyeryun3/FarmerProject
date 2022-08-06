@@ -171,4 +171,21 @@ public class MemberDAO {
 		return all;
 	}
 
+	public BoardVO boardDetail(int id) {
+		BoardVO vo = new BoardVO();
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			vo = mapper.boardDetail(id);
+		}
+		return vo;
+	}
+
+	public MemberVO findUserById(int id) {
+		MemberVO vo = new MemberVO();
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			vo = mapper.findUserById(id);
+		}
+		return vo;
+	}
 }

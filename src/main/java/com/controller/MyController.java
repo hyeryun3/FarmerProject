@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.biz.MemberBiz;
+import com.vo.BoardListVO;
 import com.vo.BoardVO;
 import com.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -136,10 +138,16 @@ public class MyController {
 //		return "boardDetail";
 //	}
 
-	@GetMapping("boardDetail/{idx}")
-	public String boardDetail(@PathVariable("idx") int idx) {
+	@GetMapping("boardDetail/{id}")
+	public String boardDetail(@PathVariable("id") int id,Model model) {
 		System.out.println("게시판 상세 컨트롤러");
-		System.out.println(idx);
+		System.out.println(id);
+		BoardVO boardById = biz.findBoardByid(id);
+		System.out.println(boardById.getText());
+		System.out.println(boardById.getTitle());
+		MemberVO userById = biz.findUserById(boardById.getUserId());
+		model.addAttribute("board",boardById);
+		model.addAttribute("writer",userById.getUserId()+"(" + userById.getName() + ")");
 		return "boardDetail";
 	}
 
@@ -148,7 +156,19 @@ public class MyController {
 		System.out.println("게시판리스트 ajax 컨트롤러");
 
 		List<BoardVO> listQna = biz.listQna();
-		return new ModelAndView("result","listQna",listQna);
+		List<BoardListVO> listBoard = new ArrayList<>();
+		BoardListVO vo = null;
+		MemberVO userById = null;
+		for(int i=0; i< listQna.size(); i++){
+			vo = new BoardListVO();
+			vo.setId(listQna.get(i).getId());
+			vo.setTitle(listQna.get(i).getTitle());
+			userById = biz.findUserById(listQna.get(i).getUserId());
+			vo.setAuthor(userById.getUserId()+"("+userById.getName()+")");
+			vo.setWriteDate(listQna.get(i).getWriteDate());
+			listBoard.add(vo);
+		}
+		return new ModelAndView("result","listBoard",listBoard);
 	}
 
 	@GetMapping("boardform.do")

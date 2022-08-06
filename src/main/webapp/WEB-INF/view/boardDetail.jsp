@@ -55,14 +55,14 @@
 			<hr>
 			<div class="qna">
 				<fieldset>
-					<legend>문의등록</legend>
+					<legend>문의글</legend>
 					<form class="qnaform">
-						작성자 <input type="text" name="userId" value="${userId}" disabled>
-						제목 <input type="text" name="title" placeholder="제목을 입력해주세요.">
+						작성자 <input type="text" name="userId" value="${writer}" readonly>
+						제목 <input type="text" name="title" value="${board.title}" placeholder="제목을 입력해주세요." readonly>
 
-						<textarea placeholder="문의 내용을 작성해주세요." name="content"></textarea>
+						<textarea placeholder="문의 내용을 작성해주세요." name="content" readonly><c:out value="${board.text}"></c:out></textarea>
 					</form>
-					<button id="button">문의등록</button>
+<%--					<button id="button">문의등록</button>--%>
 				</fieldset>
 			</div>
 		</div>

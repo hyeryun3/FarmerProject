@@ -76,4 +76,15 @@ public class MemberBiz {
 		List<BoardVO> listQna = dao.listQna();
 		return listQna;
 	}
+
+	public BoardVO findBoardByid(int id) {
+		System.out.println("게시글정보 biz");
+		BoardVO boardDetail = dao.boardDetail(id);
+		return boardDetail;
+	}
+
+	public MemberVO findUserById(int id) {
+		System.out.println("회원정보 찾기 biz");
+		return dao.findUserById(id);
+	}
 }

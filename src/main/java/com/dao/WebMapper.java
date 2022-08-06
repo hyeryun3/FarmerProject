@@ -45,6 +45,10 @@ public interface WebMapper {
 	@Select("select user_id from user where name=#{name} and email=#{email}")
 	public String findId(@Param("name") String name, @Param("email") String email);
 
+	// 회원 찾기
+	@Select("select * from user where id=#{id}")
+	public MemberVO findUserById(@Param("id") int id);
+
 	// 회원정보 수정
 	@Update("update user set email=#{email},password=#{password},tel=#{tel} where user_id=#{userId}")
 	public int updateMember(MemberVO vo);
@@ -53,12 +57,13 @@ public interface WebMapper {
 	@Insert("insert into qna(title,text,write_date,user_id) values(#{title},#{text},#{write_date},#{user_id})")
 	public int writeQna(@Param("title") String title, @Param("text") String text, @Param("write_date") LocalDateTime dateTime, @Param("user_id") int id);
 
-	// 문의글 조회
+	// 문의글 전체 조회
 	@Select("select * from qna")
 	public List<BoardVO> listQna();
 
-
-
+	// 게시글 조회
+	@Select("select * from qna where id=#{id}")
+	public BoardVO boardDetail(@Param("id") int id);
 
 	@Delete("delete from user where user_id=#{id}")
 	public int deleteMember(String id);

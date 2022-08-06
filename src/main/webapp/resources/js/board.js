@@ -13,9 +13,10 @@ jQuery(document).ready(function () {
             url: "listQna.do",
             dataType: "json",
             success: function (data) {
-                qnaSize = data.listQna.length
+                qnaSize = data.listBoard.length
+                console.log("data.listBoard",data.listBoard)
                 for (let i = 0; i < qnaSize; i++) {
-                    data_qna.push(data.listQna[i]);
+                    data_qna.push(data.listBoard[i]);
                 }
                 for (i = 0; i < qnaSize; i++) {
                     let tr = document.createElement('tr');
@@ -25,14 +26,17 @@ jQuery(document).ready(function () {
                     let writeDate = document.createElement('td');
                     let text = document.createTextNode(i+1);
                     let a = document.createElement('a');
-                    a.setAttribute('href','boardDetail/'+(i+1))
-                    a.appendChild(text)
-                    idx.appendChild(a)
+                    // a.setAttribute('href','boardDetail/'+(i+1))
+                    // a.appendChild(text)
+                    idx.appendChild(text)
 
                     text = document.createTextNode(data_qna[i].title);
-                    title.appendChild(text);
+                    a.setAttribute('href','boardDetail/'+(data_qna[i].id))
+                    a.appendChild(text)
+                    title.appendChild(a)
+                    // title.appendChild(text);
 
-                    text = document.createTextNode(data_qna[i].userId);
+                    text = document.createTextNode(data_qna[i].author);
                     author.appendChild(text);
 
                     text = document.createTextNode(data_qna[i].writeDate)
@@ -47,6 +51,11 @@ jQuery(document).ready(function () {
                 }
                 tempCnt++
 
+            },
+            error: function (request, status, error){
+                console.log("code: " + request.status)
+                console.log("message: " + request.responseText)
+                console.log("error: " + error);
             }
         })
     }
