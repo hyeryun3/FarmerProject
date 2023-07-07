@@ -23,3 +23,6 @@
 <img src="https://img.shields.io/badge/Intellij IDEA-000000?style=flat-square&logo=Intellij IDEA&logoColor=white" align="left"/>
 <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white" align="left"/>
 <br>
+
+##### - 서버 환경
+TOMCAT 9.0
