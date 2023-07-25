@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class BoardVO {
-    private int id;
+    private int idx;
     private String title;
-    private String text;
+    private String content;
     private String writeDate;
-    private int userId;
+    private int uId;
 }

@@ -68,7 +68,8 @@ public class MemberBiz {
 	public void writeQna(String title, String text, LocalDateTime dateTime, String userId){
 		System.out.println("게시물작성 biz");
 		MemberVO user = dao.findUser(userId);
-		dao.writeQna(title,text,dateTime, user.getId());
+		int idx = findUid(userId);
+		dao.writeQna(title,text,dateTime, idx);
 	}
 
 	public List<BoardVO> listQna(){
@@ -86,5 +87,15 @@ public class MemberBiz {
 	public MemberVO findUserById(int id) {
 		System.out.println("회원정보 찾기 biz");
 		return dao.findUserById(id);
+	}
+
+	public int findUid(String id){
+		System.out.println("idx 찾기 biz");
+		return dao.findUid(id);
+	}
+
+	public String findUserId(int uId){
+		System.out.println("userId 찾기 biz");
+		return dao.findUserId(uId);
 	}
 }

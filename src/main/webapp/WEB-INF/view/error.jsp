@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ERROR PAGE</title>
 </head>
 <body>
-
+<h1>오류났어요 오류</h1>
 </body>
 </html>

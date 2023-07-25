@@ -7,10 +7,7 @@ import com.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -25,6 +22,10 @@ public class MyController {
 	private final MemberBiz biz;
 	static String userId;
 
+	@GetMapping("/")
+	public void home(){
+		System.out.println("home home home");
+	}
 	@GetMapping("join.do")
 	public String join() {
 		System.out.println("회원가입화면");
@@ -143,9 +144,9 @@ public class MyController {
 		System.out.println("게시판 상세 컨트롤러");
 		System.out.println(id);
 		BoardVO boardById = biz.findBoardByid(id);
-		System.out.println(boardById.getText());
+		System.out.println(boardById.getContent());
 		System.out.println(boardById.getTitle());
-		MemberVO userById = biz.findUserById(boardById.getUserId());
+		MemberVO userById = biz.findUserById(boardById.getUId());
 		model.addAttribute("board",boardById);
 		model.addAttribute("writer",userById.getUserId()+"(" + userById.getName() + ")");
 		return "boardDetail";
@@ -161,9 +162,10 @@ public class MyController {
 		MemberVO userById = null;
 		for(int i=0; i< listQna.size(); i++){
 			vo = new BoardListVO();
-			vo.setId(listQna.get(i).getId());
+
+			vo.setId(listQna.get(i).getIdx());
 			vo.setTitle(listQna.get(i).getTitle());
-			userById = biz.findUserById(listQna.get(i).getUserId());
+			userById = biz.findUserById(listQna.get(i).getUId());
 			vo.setAuthor(userById.getUserId()+"("+userById.getName()+")");
 			vo.setWriteDate(listQna.get(i).getWriteDate());
 			listBoard.add(vo);
@@ -180,6 +182,7 @@ public class MyController {
 	public ModelAndView writeQna(@RequestParam("title") String title, @RequestParam("textarea") String text){
 		System.out.println("게시물작성 컨트롤러");
 		LocalDateTime dateTime = LocalDateTime.now();
+		System.out.println("=============================>ID: " + userId);
 		biz.writeQna(title,text,dateTime,userId);
 		return new ModelAndView("result", "r", "");
 	}

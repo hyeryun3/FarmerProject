@@ -120,7 +120,9 @@ public class MemberDAO {
 		try (SqlSession session = factory.openSession()) {
 			WebMapper mapper = session.getMapper(WebMapper.class);
 			System.out.println("exist 연결완료");
+			System.out.println("?????????????????");
 			r = mapper.countId(id); // id체크
+			System.out.println("===============================>" + r);
 			if (r > 0) {
 				session.commit();
 			} else {
@@ -149,10 +151,10 @@ public class MemberDAO {
 		return r;
 	}
 
-	public void writeQna(String title, String text, LocalDateTime dateTime,int id) {
+	public void writeQna(String title, String text, LocalDateTime dateTime,int idx) {
 		try (SqlSession session = factory.openSession()) {
 			WebMapper mapper = session.getMapper(WebMapper.class);
-			int r = mapper.writeQna(title, text, dateTime, id);
+			int r = mapper.writeQna(title, text, dateTime, idx);
 			if (r > 0) {
 				session.commit();
 			} else {
@@ -187,5 +189,22 @@ public class MemberDAO {
 			vo = mapper.findUserById(id);
 		}
 		return vo;
+	}
+
+	public int findUid(String id) {
+		int idx = 0;
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			idx = mapper.findUid(id);
+		}
+		return idx;
+	}
+	public String findUserId(int uId) {
+		String userId = "";
+		try (SqlSession session = factory.openSession()) {
+			WebMapper mapper = session.getMapper(WebMapper.class);
+			userId = mapper.findUserId(uId);
+		}
+		return userId;
 	}
 }
